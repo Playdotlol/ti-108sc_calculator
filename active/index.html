@@ -1,0 +1,186 @@
+<head>
+<style>
+                  h1 {
+            font-family: monospace;
+            font: monospace;
+            color: #5539cc;
+            font-size: 80px;
+          }
+  body {
+    background: rgb(13,12,10);
+background: linear-gradient(45deg, rgba(13,12,10,1) 0%, rgba(93,93,92,1) 29%, rgba(255,255,255,1) 51%, rgba(184,178,178,1) 86%);
+  }
+
+/* From Uiverse.io by LightAndy1 */ 
+.group {
+  display: flex;
+  line-height: 28px;
+  align-items: center;
+  position: relative;
+  max-width: 190px;
+}
+
+.input {
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
+  height: 45px;
+  padding-left: 2.5rem;
+  box-shadow: 0 0 0 1.5px #2b2c37, 0 0 25px -17px #000;
+  border: 0;
+  border-radius: 12px;
+  background-color: #16171d;
+  outline: none;
+  color: #bdbecb;
+  transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+  cursor: text;
+  z-index: 0;
+}
+
+.input::placeholder {
+  color: #bdbecb;
+}
+
+.input:hover {
+  box-shadow: 0 0 0 2.5px #2f303d, 0px 0px 25px -15px #000;
+}
+
+.input:active {
+  transform: scale(0.95);
+}
+
+.input:focus {
+  box-shadow: 0 0 0 2.5px #2f303d;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  fill: #bdbecb;
+  width: 1rem;
+  height: 1rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.button {
+  --bezier: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --edge-light: hsla(0, 0%, 50%, 0.8);
+  --text-light: rgba(255, 255, 255, 0.4);
+  --back-color: 240, 40%;
+
+  cursor: pointer;
+  padding: 0.7em 1em;
+  border-radius: 0.5em;
+  min-height: 2.4em;
+  min-width: 3em;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  font-weight: bold;
+
+  background: linear-gradient(
+    140deg,
+    hsla(var(--back-color), 50%, 1) min(2em, 20%),
+    hsla(var(--back-color), 50%, 0.6) min(8em, 100%)
+  );
+  color: hsla(0, 0%, 90%);
+  border: 0;
+  box-shadow: inset 0.4px 1px 4px var(--edge-light);
+
+  transition: all 0.1s var(--bezier);
+}
+
+.button:hover {
+  --edge-light: hsla(0, 0%, 50%, 1);
+  text-shadow: 0px 0px 10px var(--text-light);
+  box-shadow: inset 0.4px 1px 4px var(--edge-light),
+    2px 4px 8px hsla(0, 0%, 0%, 0.295);
+  transform: scale(1.1);
+}
+
+.button:active {
+  --text-light: rgba(255, 255, 255, 1);
+
+  background: linear-gradient(
+    140deg,
+    hsla(var(--back-color), 50%, 1) min(2em, 20%),
+    hsla(var(--back-color), 50%, 0.6) min(8em, 100%)
+  );
+  box-shadow: inset 0.4px 1px 8px var(--edge-light),
+    0px 0px 8px hsla(var(--back-color), 50%, 0.6);
+  text-shadow: 0px 0px 20px var(--text-light);
+  color: hsla(0, 0%, 100%, 1);
+  letter-spacing: 0.1em;
+  transform: scale(1);
+}
+
+
+</style>
+</head>
+<body>
+<script>
+          function create() {
+            var url = 'https://ultrastatic.pages.dev'
+            var win = window.open();
+            win.document.body.style.margin = '0';
+            win.document.body.style.height = '100vh';
+            var iframe = win.document.createElement('iframe');
+            iframe.style.border = 'none';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.margin = '0';
+            iframe.src = url;
+            win.document.body.appendChild(iframe);
+        }
+</script>
+<h1>
+  UltraStatic V1
+</h1>
+	<!-- From Uiverse.io by LightAndy1 --> 
+<div class="group">
+  <svg viewBox="0 0 24 24" aria-hidden="true" class="search-icon">
+    <g>
+      <path
+        d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"
+      ></path>
+    </g>
+  </svg>
+
+<form id="uv-form">
+            <input   class="input" id="uv-search-engine" value="https://www.google.com/search?q=%s" type="hidden"/> 
+            <input class="input"  class="input" class="input" id="uv-address" type="text" placeholder="Search Google or type an URL" class="form__input"/>
+          </form>
+</div>
+
+
+
+<!-- From Uiverse.io by milegelu --> 
+<div>
+  <button onclick="create()" class="button">
+    <svg
+      viewBox="0 0 16 16"
+      class="bi bi-lightning-charge-fill"
+      fill="currentColor"
+      height="16"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"
+      ></path></svg
+    >About:Blanker
+  </button>
+</div>
+
+<!-- From Uiverse.io by SelfMadeSystem --> 
+
+	            <script src="uv/uv.bundle.js" charset="UTF-8" defer></script>
+      <script src="uv/uv.config.js" charset="UTF-8" defer></script>
+      <script src="register-sw.js" charset="UTF-8" defer></script>
+      <script src="search.js" charset="UTF-8" defer></script>
+      <script src="index.js" charset="UTF-8" defer></script>
+      </body>

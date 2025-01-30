@@ -1,125 +1,168 @@
 <head>
 <style>
-                  h1 {
-            font-family: monospace;
-            font: monospace;
-            color: #5539cc;
-            font-size: 80px;
-          }
-  body {
-    background: rgb(13,12,10);
-background: linear-gradient(45deg, rgba(13,12,10,1) 0%, rgba(93,93,92,1) 29%, rgba(255,255,255,1) 51%, rgba(184,178,178,1) 86%);
-  }
-
-/* From Uiverse.io by LightAndy1 */ 
-.group {
-  display: flex;
-  line-height: 28px;
-  align-items: center;
-  position: relative;
-  max-width: 190px;
+/* Dark Theme Search Bar */
+	body {
+    background: black;
+    overflow: hidden;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+/* Animated Heading */
+h2 {
+    font-size: 2rem;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeIn 1s forwards;
+    transition: 0.3s ease-in-out;
 }
 
+h2:hover {
+    color: grey;
+    transform: scale(1.1);
+}
+/* Animated Heading */
+h1 {
+    font-size: 3rem;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeIn 1s forwards;
+    transition: 0.3s ease-in-out;
+}
+
+h1:hover {
+    color: grey;
+    transform: scale(1.1);
+}
 .input {
-  font-family: "Montserrat", sans-serif;
-  width: 100%;
-  height: 45px;
-  padding-left: 2.5rem;
-  box-shadow: 0 0 0 1.5px #2b2c37, 0 0 25px -17px #000;
-  border: 0;
-  border-radius: 12px;
-  background-color: #16171d;
-  outline: none;
-  color: #bdbecb;
-  transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1);
-  cursor: text;
-  z-index: 0;
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    border: 2px solid #444;
+    border-radius: 50px;
+    outline: none;
+    width: 300px;
+    background: #222;
+    color: #ddd;
+    transition: all 0.3s ease-in-out;
 }
 
 .input::placeholder {
-  color: #bdbecb;
-}
-
-.input:hover {
-  box-shadow: 0 0 0 2.5px #2f303d, 0px 0px 25px -15px #000;
-}
-
-.input:active {
-  transform: scale(0.95);
+    color: rgba(200, 200, 200, 0.6);
 }
 
 .input:focus {
-  box-shadow: 0 0 0 2.5px #2f303d;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #555;
+    background: #333;
 }
 
-.search-icon {
-  position: absolute;
-  left: 1rem;
-  fill: #bdbecb;
-  width: 1rem;
-  height: 1rem;
-  pointer-events: none;
-  z-index: 1;
-}
-
+/* Darker Themed Button */
 .button {
-  --bezier: cubic-bezier(0.22, 0.61, 0.36, 1);
-  --edge-light: hsla(0, 0%, 50%, 0.8);
-  --text-light: rgba(255, 255, 255, 0.4);
-  --back-color: 240, 40%;
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    background: linear-gradient(45deg, #333, #555);
+    color: #ddd;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
 
-  cursor: pointer;
-  padding: 0.7em 1em;
-  border-radius: 0.5em;
-  min-height: 2.4em;
-  min-width: 3em;
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
+.button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.6s ease-in-out;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+}
 
-  font-size: 18px;
-  letter-spacing: 0.05em;
-  line-height: 1;
-  font-weight: bold;
-
-  background: linear-gradient(
-    140deg,
-    hsla(var(--back-color), 50%, 1) min(2em, 20%),
-    hsla(var(--back-color), 50%, 0.6) min(8em, 100%)
-  );
-  color: hsla(0, 0%, 90%);
-  border: 0;
-  box-shadow: inset 0.4px 1px 4px var(--edge-light);
-
-  transition: all 0.1s var(--bezier);
+.button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .button:hover {
-  --edge-light: hsla(0, 0%, 50%, 1);
-  text-shadow: 0px 0px 10px var(--text-light);
-  box-shadow: inset 0.4px 1px 4px var(--edge-light),
-    2px 4px 8px hsla(0, 0%, 0%, 0.295);
-  transform: scale(1.1);
+    background: linear-gradient(45deg, #555, #777);
+    transform: scale(1.1);
 }
 
 .button:active {
-  --text-light: rgba(255, 255, 255, 1);
-
-  background: linear-gradient(
-    140deg,
-    hsla(var(--back-color), 50%, 1) min(2em, 20%),
-    hsla(var(--back-color), 50%, 0.6) min(8em, 100%)
-  );
-  box-shadow: inset 0.4px 1px 8px var(--edge-light),
-    0px 0px 8px hsla(var(--back-color), 50%, 0.6);
-  text-shadow: 0px 0px 20px var(--text-light);
-  color: hsla(0, 0%, 100%, 1);
-  letter-spacing: 0.1em;
-  transform: scale(1);
+    transform: scale(0.95);
+}
+/* Ripple Effect */
+.ripple {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border: 2px solid grey;
+    border-radius: 50%;
+    animation: rippleEffect 0.6s linear;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
 }
 
+@keyframes rippleEffect {
+    from {
+        transform: scale(0);
+        opacity: 1;
+    }
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
 
+/* Stars */
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+/* Shooting Stars */
+.shooting-star {
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background: white;
+    animation: shootingStar 2s linear;
+}
+
+@keyframes shootingStar {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(500px);
+        opacity: 0;
+    }
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 </style>
+	<link rel="shortcut icon" href="https://ssl.gstatic.com/docs/documents/images/kix-favicon-2023q4.ico">
+	<title>Google Docs</title>
 </head>
 <body>
 <script>
@@ -138,45 +181,109 @@ background: linear-gradient(45deg, rgba(13,12,10,1) 0%, rgba(93,93,92,1) 29%, rg
         }
 </script>
 <h1>
-  UltraStatic V1
+  UltraStatic
 </h1>
-	<!-- From Uiverse.io by LightAndy1 --> 
-<div class="group">
-  <svg viewBox="0 0 24 24" aria-hidden="true" class="search-icon">
-    <g>
-      <path
-        d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"
-      ></path>
-    </g>
-  </svg>
+<h2>
+The Future Of Proxies. Made Static.
+</h2>
 
 <form id="uv-form">
-            <input   class="input" id="uv-search-engine" value="https://www.google.com/search?q=%s" type="hidden"/> 
-            <input class="input"  class="input" class="input" id="uv-address" type="text" placeholder="Search Google or type an URL" class="form__input"/>
+            <input   class="input" placeholder="Seach Google" id="uv-search-engine" value="https://www.google.com/search?q=%s" type="hidden"/> 
+            <input class="input"  id="uv-address" type="text" placeholder="Type a URL" class="form__input"/>
           </form>
-</div>
 
 
 
 <!-- From Uiverse.io by milegelu --> 
 <div>
   <button onclick="create()" class="button">
-    <svg
-      viewBox="0 0 16 16"
-      class="bi bi-lightning-charge-fill"
-      fill="currentColor"
-      height="16"
-      width="16"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"
-      ></path></svg
-    >About:Blanker
+About:Blanker
+  </button>
+  <button onclick="window.location.replace('https://ultrastatic.pages.dev/active/go/hvtrs8%2F-wuw%2Cgmoelg.aoo%2F%3Dhn%3Dgn%2FG%40')" class="button">
+Google
+  </button>
+  <button onclick="window.location.replace('https://ultrastatic.pages.dev/active/go/hvtrs8%2F-sgel-rilecprlg-qecpnale%2Cgnivcj.oe-')" class="button">
+Roblox (NOW.gg CUSTOM)
   </button>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const body = document.body;
+    
+    // Ripple Effect on Click
+    body.addEventListener("click", (e) => {
+        const ripple = document.createElement("div");
+        ripple.classList.add("ripple");
+        document.body.appendChild(ripple);
+        
+        ripple.style.left = `${e.clientX}px`;
+        ripple.style.top = `${e.clientY}px`;
+        
+        ripple.addEventListener("animationend", () => {
+            ripple.remove();
+        });
+    });
+    
+    // Create Stars
+    const createStar = () => {
+        const star = document.createElement("div");
+        star.classList.add("star");
+        document.body.appendChild(star);
+        
+        const size = Math.random() * 3 + 1;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.left = `${Math.random() * window.innerWidth}px`;
+        star.style.top = `${Math.random() * window.innerHeight}px`;
+        
+        setTimeout(() => star.remove(), 7000);
+    };
+    
+    setInterval(createStar, 80);
+    
+    // Create Shooting Stars
+    const createShootingStar = () => {
+        const star = document.createElement("div");
+        star.classList.add("shooting-star");
+        document.body.appendChild(star);
+        
+        star.style.left = `${Math.random() * window.innerWidth}px`;
+        star.style.top = `-${Math.random() * 50}px`;
+        
+        setTimeout(() => star.remove(), 2500);
+    };
+    
+    setInterval(createShootingStar, 5000);
 
-<!-- From Uiverse.io by SelfMadeSystem --> 
+    // Update Ripple Effect Size
+    const style = document.createElement("style");
+    style.innerHTML = `
+        .ripple {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border: 2px solid cyan;
+            border-radius: 50%;
+            animation: rippleEffect 0.6s linear;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+        }
+        
+        @keyframes rippleEffect {
+            from {
+                transform: scale(0);
+                opacity: 1;
+            }
+            to {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+});
+
+</script>
 
 	            <script src="uv/uv.bundle.js" charset="UTF-8" defer></script>
       <script src="uv/uv.config.js" charset="UTF-8" defer></script>
